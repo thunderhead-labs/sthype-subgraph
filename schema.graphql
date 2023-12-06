@@ -116,6 +116,7 @@ type TransactionProposed @entity(immutable: true) {
   blockNumber: BigInt!
   blockTimestamp: BigInt!
   transactionHash: Bytes!
+  addTransactionCalldata: Bytes!
 }
 
 type VeFxsVotingDelegationSet @entity(immutable: true) {
