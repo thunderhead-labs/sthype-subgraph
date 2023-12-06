@@ -1,0 +1,78 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: FraxGovernorOmega
+    network: mainnet
+    source:
+      address: "0xBCB25d7582D0738a77508096B05488d49181b255"
+      abi: FraxGovernorOmega
+      startBlock: 18625497
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - AddToDelegateCallAllowlist
+        - AddToSafeAllowlist
+        - EIP712DomainChanged
+        - ProposalCanceled
+        - ProposalCreated
+        - ProposalExecuted
+        - ProposalThresholdSet
+        - QuorumNumeratorUpdated
+        - RemoveFromDelegateCallAllowlist
+        - RemoveFromSafeAllowlist
+        - SafeVotingPeriodSet
+        - ShortCircuitNumeratorUpdated
+        - TransactionProposed
+        - VeFxsVotingDelegationSet
+        - VoteCast
+        - VoteCastWithParams
+        - VotingDelayBlocksSet
+        - VotingDelaySet
+        - VotingPeriodSet
+      abis:
+        - name: FraxGovernorOmega
+          file: ./abis/FraxGovernorOmega.json
+      eventHandlers:
+        - event: AddToDelegateCallAllowlist(address)
+          handler: handleAddToDelegateCallAllowlist
+        - event: AddToSafeAllowlist(indexed address)
+          handler: handleAddToSafeAllowlist
+        - event: EIP712DomainChanged()
+          handler: handleEIP712DomainChanged
+        - event: ProposalCanceled(uint256)
+          handler: handleProposalCanceled
+        - event: ProposalCreated(uint256,address,address[],uint256[],string[],bytes[],uint256,uint256,string)
+          handler: handleProposalCreated
+        - event: ProposalExecuted(uint256)
+          handler: handleProposalExecuted
+        - event: ProposalThresholdSet(uint256,uint256)
+          handler: handleProposalThresholdSet
+        - event: QuorumNumeratorUpdated(uint256,uint256)
+          handler: handleQuorumNumeratorUpdated
+        - event: RemoveFromDelegateCallAllowlist(address)
+          handler: handleRemoveFromDelegateCallAllowlist
+        - event: RemoveFromSafeAllowlist(indexed address)
+          handler: handleRemoveFromSafeAllowlist
+        - event: SafeVotingPeriodSet(address,uint256,uint256)
+          handler: handleSafeVotingPeriodSet
+        - event: ShortCircuitNumeratorUpdated(uint256,uint256)
+          handler: handleShortCircuitNumeratorUpdated
+        - event: TransactionProposed(indexed address,uint256,indexed bytes32,indexed uint256)
+          handler: handleTransactionProposed
+        - event: VeFxsVotingDelegationSet(address,address)
+          handler: handleVeFxsVotingDelegationSet
+        - event: VoteCast(indexed address,uint256,uint8,uint256,string)
+          handler: handleVoteCast
+        - event: VoteCastWithParams(indexed address,uint256,uint8,uint256,string,bytes)
+          handler: handleVoteCastWithParams
+        - event: VotingDelayBlocksSet(uint256,uint256)
+          handler: handleVotingDelayBlocksSet
+        - event: VotingDelaySet(uint256,uint256)
+          handler: handleVotingDelaySet
+        - event: VotingPeriodSet(uint256,uint256)
+          handler: handleVotingPeriodSet
+      file: ./src/frax-governor-omega.ts
