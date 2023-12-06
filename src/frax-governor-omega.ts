@@ -19,7 +19,7 @@ import {
   VotingDelaySet as VotingDelaySetEvent,
   VotingPeriodSet as VotingPeriodSetEvent
 } from "../generated/FraxGovernorOmega/FraxGovernorOmega"
-import {Value, log, ethereum} from "@graphprotocol/graph-ts";
+import {Bytes, Value, log, ethereum, BigInt} from "@graphprotocol/graph-ts";
 import {
   AddToDelegateCallAllowlist,
   AddToSafeAllowlist,
@@ -242,7 +242,43 @@ export function handleTransactionProposed(
   entity.transactionHash = event.transaction.hash
 
   entity.addTransactionCalldata = event.transaction.input
-  
+  entity.transactionLogIndex = event.transactionLogIndex
+  entity.logIndex = event.logIndex
+
+  const functionSelector = event.transaction.input.toHexString().slice(0,10);
+
+  const inputDataHexString = event.transaction.input.toHexString().slice(10);
+  const hexStringToDecode = '0x0000000000000000000000000000000000000000000000000000000000000020' + inputDataHexString;
+  const bytesToDecode = Bytes.fromByteArray(Bytes.fromHexString(hexStringToDecode));
+
+  if (functionSelector == '0xb021d2c3') { // addTransaction
+    
+    const decoded = ethereum.decode(
+      '(address,(address,uint256,bytes,uint8,uint256,uint256,uint256,address,address,uint256),bytes)', // addTransaction params
+      bytesToDecode
+    );
+    entity.proposalCalldata = decoded!.toTuple()[1].toTuple()[2].toBytes();
+  }
+  // this can't be tested until there is a proposal with a batchAddTransaction. need to also figure out how to get the log index within a transaction
+  // else if (functionSelector == '0x072c8e0d 11111') {//batchAddTransaction
+
+  //   const decoded = ethereum.decode(
+  //     '(address[],(address,uint256,bytes,uint8,uint256,uint256,uint256,address,address,uint256)[],bytes[])', // addTransaction params
+  //     bytesToDecode
+  //   );
+
+  //   const calldataArray = decoded!.toTuple()[1].toArray();
+    
+  //   entity.proposalCalldata = calldataArray[changetype<i32>(event.logIndex) * 2 - 1].toTuple()[2].toBytes(); // TransactionProposed is emitted after ProposalCreated
+
+  //   log.warning('decoded: {}', [decoded!.toTuple()[0].toAddress().toHexString()]);
+  // } 
+  else {
+    log.error('functionSelector not found: {}', [functionSelector]);
+
+    entity.proposalCalldata = Bytes.fromByteArray(Bytes.fromHexString('0x70e2fd5f0000000000000000000000000000000000000000000000000000000000000000')) // unableToDecode(uint256)
+  }
+
   entity.save()
 }
 
