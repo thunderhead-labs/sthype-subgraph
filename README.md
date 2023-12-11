@@ -57,3 +57,7 @@ You can see how he does it [here](https://github.com/apoorvlathey/eth-calldata-d
 
 ## Consideration
 All proposals so far have been added with [`addTransaction`](https://github.com/thunderhead-labs/frax-governance/blob/master/src/FraxGovernorOmega.sol#L247), but its possible to add them with [`batchAddTransaction`](https://github.com/thunderhead-labs/frax-governance/blob/master/src/FraxGovernorOmega.sol#L306) which has a different function signature. Logic exists in the event handler to handle this case, but it is commented it out and hasn't been tested due to this event not existing yet. If it encounters this, it will enter `unableToDecode(uint256) 0` as the encoded calldata. After this, one needs to figure out how to get the log index of an event and uncomment/test the logic. 
+
+## Known Issues
+The subgraph does not properly decode the `name` of `OperatorAdded` event. If this is needed we can look into fixing it. 
+![Alt text](image.png)
