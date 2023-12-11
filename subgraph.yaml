@@ -76,3 +76,318 @@ dataSources:
         - event: VotingPeriodSet(uint256,uint256)
           handler: handleVotingPeriodSet
       file: ./src/frax-governor-omega.ts
+  - kind: ethereum
+    name: stFlip
+    network: mainnet
+    source:
+      address: "0x961D4921e1718E633BAC8Ded88c4a1cAe44b785a"
+      abi: stFlip
+      startBlock: 18625393
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - DefaultAdminDelayChangeCanceled
+        - DefaultAdminDelayChangeScheduled
+        - DefaultAdminTransferCanceled
+        - DefaultAdminTransferScheduled
+        - Initialized
+        - Mint
+        - Rebase
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+        - Transfer
+      abis:
+        - name: stFlip
+          file: ./abis/stFlip.json
+      eventHandlers:
+        - event: Approval(indexed address,indexed address,uint256)
+          handler: handleApproval
+        - event: DefaultAdminDelayChangeCanceled()
+          handler: handleDefaultAdminDelayChangeCanceled
+        - event: DefaultAdminDelayChangeScheduled(uint48,uint48)
+          handler: handleDefaultAdminDelayChangeScheduled
+        - event: DefaultAdminTransferCanceled()
+          handler: handleDefaultAdminTransferCanceled
+        - event: DefaultAdminTransferScheduled(indexed address,uint48)
+          handler: handleDefaultAdminTransferScheduled
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: Mint(address,uint256)
+          handler: handleMint
+        - event: Rebase(uint256,uint256,uint256,uint256)
+          handler: handleRebase
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: Transfer(indexed address,indexed address,uint256)
+          handler: handleTransfer
+      file: ./src/stflip.ts
+  - kind: ethereum
+    name: Output
+    network: mainnet
+    source:
+      address: "0x6345A9F7e7069D478FFF3595f1522f28d8405151"
+      abi: Output
+      startBlock: 18625000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - OutputDefaultAdminDelayChangeCanceled
+        - OutputDefaultAdminDelayChangeScheduled
+        - OutputDefaultAdminTransferCanceled
+        - OutputDefaultAdminTransferScheduled
+        - OutputInitialized
+        - OperatorAdded
+        - OperatorFeeUpdated
+        - OperatorWhitelistUpdated
+        - OutputRoleAdminChanged
+        - OutputRoleGranted
+        - OutputRoleRevoked
+        - ValidatorAllowanceUpdated
+        - ValidatorsAdded
+        - ValidatorsFunded
+        - ValidatorsRedeemed
+        - ValidatorsStatusUpdated
+        - ValidatorsTrackBalanceUpdated
+        - ValidatorsWhitelistUpdated
+      abis:
+        - name: Output
+          file: ./abis/Output.json
+      eventHandlers:
+        - event: DefaultAdminDelayChangeCanceled()
+          handler: handleDefaultAdminDelayChangeCanceled
+        - event: DefaultAdminDelayChangeScheduled(uint48,uint48)
+          handler: handleDefaultAdminDelayChangeScheduled
+        - event: DefaultAdminTransferCanceled()
+          handler: handleDefaultAdminTransferCanceled
+        - event: DefaultAdminTransferScheduled(indexed address,uint48)
+          handler: handleDefaultAdminTransferScheduled
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: OperatorAdded(indexed string,indexed uint256,indexed uint256,uint256,address)
+          handler: handleOperatorAdded
+        - event: OperatorFeeUpdated(indexed uint256,indexed uint256,indexed uint256)
+          handler: handleOperatorFeeUpdated
+        - event: OperatorWhitelistUpdated(indexed uint256,indexed bool)
+          handler: handleOperatorWhitelistUpdated
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: ValidatorAllowanceUpdated(indexed uint256,indexed uint256)
+          handler: handleValidatorAllowanceUpdated
+        - event: ValidatorsAdded(indexed uint256,indexed uint256)
+          handler: handleValidatorsAdded
+        - event: ValidatorsFunded(indexed uint256,indexed uint256)
+          handler: handleValidatorsFunded
+        - event: ValidatorsRedeemed(indexed uint256,indexed uint256)
+          handler: handleValidatorsRedeemed
+        - event: ValidatorsStatusUpdated(indexed uint256,indexed bool,indexed bool)
+          handler: handleValidatorsStatusUpdated
+        - event: ValidatorsTrackBalanceUpdated(indexed uint256,indexed bool)
+          handler: handleValidatorsTrackBalanceUpdated
+        - event: ValidatorsWhitelistUpdated(indexed uint256,indexed bool)
+          handler: handleValidatorsWhitelistUpdated
+      file: ./src/output.ts
+  - kind: ethereum
+    name: Rebaser
+    network: mainnet
+    source:
+      address: "0x695D1ce0E1Dd5Fca03Bed74c35A407BdEE06636a"
+      abi: Rebaser
+      startBlock: 18625000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - RebaserDefaultAdminDelayChangeCanceled
+        - RebaserDefaultAdminDelayChangeScheduled
+        - RebaserDefaultAdminTransferCanceled
+        - RebaserDefaultAdminTransferScheduled
+        - FeeClaim
+        - RebaserInitialized
+        - NewAprThreshold
+        - NewRebaseInterval
+        - NewSlashThreshold
+        - RebaserRebase
+        - RebaserRoleAdminChanged
+        - RebaserRoleGranted
+        - RebaserRoleRevoked
+      abis:
+        - name: Rebaser
+          file: ./abis/Rebaser.json
+      eventHandlers:
+        - event: DefaultAdminDelayChangeCanceled()
+          handler: handleDefaultAdminDelayChangeCanceled
+        - event: DefaultAdminDelayChangeScheduled(uint48,uint48)
+          handler: handleDefaultAdminDelayChangeScheduled
+        - event: DefaultAdminTransferCanceled()
+          handler: handleDefaultAdminTransferCanceled
+        - event: DefaultAdminTransferScheduled(indexed address,uint48)
+          handler: handleDefaultAdminTransferScheduled
+        - event: FeeClaim(address,indexed uint256,indexed bool,indexed uint256)
+          handler: handleFeeClaim
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: NewAprThreshold(indexed uint256)
+          handler: handleNewAprThreshold
+        - event: NewRebaseInterval(indexed uint256)
+          handler: handleNewRebaseInterval
+        - event: NewSlashThreshold(indexed uint256)
+          handler: handleNewSlashThreshold
+        - event: RebaserRebase(indexed uint256,indexed uint256,uint256,indexed uint256)
+          handler: handleRebaserRebase
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+      file: ./src/rebaser.ts
+  - kind: ethereum
+    name: Burner
+    network: mainnet
+    source:
+      address: "0xb4078E779F4a982f27109522E2BA07dd9E133252"
+      abi: Burner
+      startBlock: 18625000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Burn
+        - BurnerDefaultAdminDelayChangeCanceled
+        - BurnerDefaultAdminDelayChangeScheduled
+        - BurnerDefaultAdminTransferCanceled
+        - BurnerDefaultAdminTransferScheduled
+        - BurnerInitialized
+        - BurnerRoleAdminChanged
+        - BurnerRoleGranted
+        - BurnerRoleRevoked
+      abis:
+        - name: Burner
+          file: ./abis/Burner.json
+      eventHandlers:
+        - event: Burn(address,indexed address,indexed uint256,indexed uint256)
+          handler: handleBurn
+        - event: DefaultAdminDelayChangeCanceled()
+          handler: handleDefaultAdminDelayChangeCanceled
+        - event: DefaultAdminDelayChangeScheduled(uint48,uint48)
+          handler: handleDefaultAdminDelayChangeScheduled
+        - event: DefaultAdminTransferCanceled()
+          handler: handleDefaultAdminTransferCanceled
+        - event: DefaultAdminTransferScheduled(indexed address,uint48)
+          handler: handleDefaultAdminTransferScheduled
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+      file: ./src/burner.ts
+  - kind: ethereum
+    name: Aggregator
+    network: mainnet
+    source:
+      address: "0x38d8d03dFA9554D2232D4249EB23c48c23a24fA4"
+      abi: Aggregator
+      startBlock: 18625000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - BurnAggregation
+        - CanonicalPoolChanged
+        - AggregatorDefaultAdminDelayChangeCanceled
+        - AggregatorDefaultAdminDelayChangeScheduled
+        - AggregatorDefaultAdminTransferCanceled
+        - AggregatorDefaultAdminTransferScheduled
+        - AggregatorInitialized
+        - AggregatorRoleAdminChanged
+        - AggregatorRoleGranted
+        - AggregatorRoleRevoked
+        - StakeAggregation
+      abis:
+        - name: Aggregator
+          file: ./abis/Aggregator.json
+      eventHandlers:
+        - event: BurnAggregation(address,indexed uint256,indexed uint256,indexed uint256)
+          handler: handleBurnAggregation
+        - event: CanonicalPoolChanged(indexed address)
+          handler: handleCanonicalPoolChanged
+        - event: DefaultAdminDelayChangeCanceled()
+          handler: handleDefaultAdminDelayChangeCanceled
+        - event: DefaultAdminDelayChangeScheduled(uint48,uint48)
+          handler: handleDefaultAdminDelayChangeScheduled
+        - event: DefaultAdminTransferCanceled()
+          handler: handleDefaultAdminTransferCanceled
+        - event: DefaultAdminTransferScheduled(indexed address,uint48)
+          handler: handleDefaultAdminTransferScheduled
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+        - event: StakeAggregation(indexed address,indexed uint256,indexed uint256)
+          handler: handleStakeAggregation
+      file: ./src/aggregator.ts
+  - kind: ethereum
+    name: Minter
+    network: mainnet
+    source:
+      address: "0xb6FF055B901b8c2d37d55DA1f1DAaEA956136350"
+      abi: Minter
+      startBlock: 18625000
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - MinterDefaultAdminDelayChangeCanceled
+        - MinterDefaultAdminDelayChangeScheduled
+        - MinterDefaultAdminTransferCanceled
+        - MinterDefaultAdminTransferScheduled
+        - MinterInitialized
+        - MinterRoleAdminChanged
+        - MinterRoleGranted
+        - MinterRoleRevoked
+      abis:
+        - name: Minter
+          file: ./abis/Minter.json
+      eventHandlers:
+        - event: DefaultAdminDelayChangeCanceled()
+          handler: handleDefaultAdminDelayChangeCanceled
+        - event: DefaultAdminDelayChangeScheduled(uint48,uint48)
+          handler: handleDefaultAdminDelayChangeScheduled
+        - event: DefaultAdminTransferCanceled()
+          handler: handleDefaultAdminTransferCanceled
+        - event: DefaultAdminTransferScheduled(indexed address,uint48)
+          handler: handleDefaultAdminTransferScheduled
+        - event: Initialized(uint8)
+          handler: handleInitialized
+        - event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+          handler: handleRoleAdminChanged
+        - event: RoleGranted(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleGranted
+        - event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+          handler: handleRoleRevoked
+      file: ./src/minter.ts
