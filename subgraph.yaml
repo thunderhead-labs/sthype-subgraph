@@ -1,0 +1,57 @@
+specVersion: 0.0.5
+schema:
+  file: ./schema.graphql
+dataSources:
+  - kind: ethereum
+    name: stHYPE
+    network: hyperliquid:https://api.hyperliquid-testnet.xyz/evm
+    source:
+      address: "0x4D6b8f9518b0b92080b5eAAf80bD505734A059Ae"
+      abi: stHYPE
+      startBlock: 8413668
+    mapping:
+      kind: ethereum/events
+      apiVersion: 0.0.7
+      language: wasm/assemblyscript
+      entities:
+        - Approval
+        - DefaultAdminDelayChangeCanceled
+        - DefaultAdminDelayChangeScheduled
+        - DefaultAdminTransferCanceled
+        - DefaultAdminTransferScheduled
+        - Initialized
+        - Mint
+        - Rebase
+        - RoleAdminChanged
+        - RoleGranted
+        - RoleRevoked
+        - Transfer
+      abis:
+        - name: stHYPE
+          file: ./abis/stHYPE.json
+      eventHandlers:
+        #- event: Approval(indexed address,indexed address,uint256)
+        #  handler: handleApproval
+        #- event: DefaultAdminDelayChangeCanceled()
+        #  handler: handleDefaultAdminDelayChangeCanceled
+        #- event: DefaultAdminDelayChangeScheduled(uint48,uint48)
+        #  handler: handleDefaultAdminDelayChangeScheduled
+        #- event: DefaultAdminTransferCanceled()
+        #  handler: handleDefaultAdminTransferCanceled
+        #- event: DefaultAdminTransferScheduled(indexed address,uint48)
+        #  handler: handleDefaultAdminTransferScheduled
+        #- event: Initialized(uint64)
+        #  handler: handleInitialized
+        #- event: Mint(address,uint256)
+        #  handler: handleMint
+        - event: Rebase(uint256,uint256,uint256)
+          handler: handleRebase
+        #- event: RoleAdminChanged(indexed bytes32,indexed bytes32,indexed bytes32)
+        #  handler: handleRoleAdminChanged
+        #- event: RoleGranted(indexed bytes32,indexed address,indexed address)
+        #  handler: handleRoleGranted
+        #- event: RoleRevoked(indexed bytes32,indexed address,indexed address)
+        #  handler: handleRoleRevoked
+        #- event: Transfer(indexed address,indexed address,uint256)
+        #  handler: handleTransfer
+      file: ./src/stHYPE.ts

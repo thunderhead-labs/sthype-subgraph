@@ -1,26 +1,9 @@
 {
-  "mainnet": {
-    "FraxGovernorOmega": {
-      "address": "0xBCB25d7582D0738a77508096B05488d49181b255",
-      "startBlock": 18625497
-    },
-    "stFlip": {
-      "address": "0x961D4921e1718E633BAC8Ded88c4a1cAe44b785a"
-    },
-    "Output": {
-      "address": "0x6345A9F7e7069D478FFF3595f1522f28d8405151"
-    },
-    "Rebaser": {
-      "address": "0x695D1ce0E1Dd5Fca03Bed74c35A407BdEE06636a"
-    },
-    "Burner": {
-      "address": "0xb4078E779F4a982f27109522E2BA07dd9E133252"
-    },
-    "Aggregator": {
-      "address": "0x38d8d03dFA9554D2232D4249EB23c48c23a24fA4"
-    },
-    "Minter": {
-      "address": "0xb6FF055B901b8c2d37d55DA1f1DAaEA956136350"
+  "hyperliquid": {
+    "stHYPE": {
+      "address": "0x4D6b8f9518b0b92080b5eAAf80bD505734A059Ae",
+      "startBlock": 8413668
     }
   }
 }
+  

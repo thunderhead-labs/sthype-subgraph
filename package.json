@@ -1,18 +1,20 @@
 {
-  "name": "stflip-omega",
+  "name": "sthype-testnet",
   "license": "UNLICENSED",
   "scripts": {
     "codegen": "graph codegen",
     "build": "graph build",
-    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ stflip-omega",
-    "create-local": "graph create --node http://localhost:8020/ stflip-omega",
-    "remove-local": "graph remove --node http://localhost:8020/ stflip-omega",
-    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 stflip-omega",
+    "deploy": "graph deploy --node https://api.studio.thegraph.com/deploy/ sthype-testnet",
+    "create-local": "graph create --node http://localhost:8020/ sthype-testnet",
+    "remove-local": "graph remove --node http://localhost:8020/ sthype-testnet",
+    "deploy-local": "graph deploy --node http://localhost:8020/ --ipfs http://localhost:5001 sthype-testnet",
     "test": "graph test"
   },
   "dependencies": {
     "@graphprotocol/graph-cli": "0.62.0",
     "@graphprotocol/graph-ts": "0.30.0"
   },
-  "devDependencies": { "matchstick-as": "0.5.0" }
+  "devDependencies": {
+    "matchstick-as": "0.5.0"
+  }
 }
