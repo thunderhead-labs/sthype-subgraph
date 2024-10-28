@@ -2,7 +2,7 @@ specVersion: 0.0.5
 schema:
   file: ./schema.graphql
 dataSources:
-  - kind: hyperliquid
+  - kind: ethereum
     name: stHYPE
     network: hyperliquid:https://api.hyperliquid-testnet.xyz/evm
     source:
