@@ -30,7 +30,7 @@ dataSources:
         - name: stHYPE
           file: ./abis/stHYPE.json
       eventHandlers:
-        #- event: Approval(indexed address,indexed address,uint256)
+        ##- event: Approval(indexed address,indexed address,uint256)
         #  handler: handleApproval
         #- event: DefaultAdminDelayChangeCanceled()
         #  handler: handleDefaultAdminDelayChangeCanceled
